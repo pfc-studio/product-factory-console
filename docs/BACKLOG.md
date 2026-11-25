@@ -122,7 +122,7 @@ GPT2 owns ordering and turns items into task cards (`docs/tasks/<ID>.md`) that m
 | X-09 | Spec protection: GPT1 never edits task cards or acceptance tests | GPT2 checks | WORKFLOW §4 | Active |
 | X-10 | Conflict escalation and three-fail loop guard | Both | WORKFLOW §10–11 | Active |
 | X-11 | Phase cap tracking and kill criteria at each close | GPT2 | STATUS, DIGEST | Active |
-| X-12 | Windows smoke test list for Ashley at phase close | GPT2 | DIGEST | Active |
+| X-12 | Automated Windows smoke results and outstanding checks at phase close | GPT2 | DIGEST | Active |
 | X-13 | Dependency inventory (`docs/DEPENDENCIES.md`) with licence and reason | GPT1 | created in P0-01 | In review |
 
 ## Added features (setup suggestions; GPT2 may reorder, Ashley may drop)

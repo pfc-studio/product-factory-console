@@ -27,3 +27,5 @@ Neither passes its own work. Ashley merges each PR after a PASS and decides anyt
 
 ## Commands (from Phase 0)
 `npm ci` · `npm run check` · `npm run dev` · `npm run test:e2e` · `npm run test:golden` · `npm run package`
+
+`npm run test:smoke` builds the app and checks a live Electron window. The Windows smoke workflow runs it on pull requests with the Node version pinned in `.nvmrc`. Local runs need a display and a working Chromium sandbox.

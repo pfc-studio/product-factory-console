@@ -22,7 +22,7 @@ Card: docs/tasks/<TASK-ID>.md
 - Tests weakened, skipped or deleted: none (or explain; this blocks the task)
 
 ## Not run
-- <check>: <why>. Windows smoke test needed: <yes/no, steps>
+- <check>: <why>. For a Windows check, name the automated job or describe the automation still needed.
 
 ## Dependencies added
 | Package | Exact version | Reason | Licence | Maintenance | Lighter alternative |

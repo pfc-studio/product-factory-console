@@ -34,6 +34,16 @@ async function verifyWindow(window) {
   assert.equal(preferences.webSecurity, true);
   assert.equal(app.commandLine.hasSwitch("no-sandbox"), false);
 
+  if (process.platform === "win32") {
+    const rendererPid = contents.getOSProcessId();
+    const renderer = app.getAppMetrics().find(({ pid }) => pid === rendererPid);
+    assert.equal(
+      renderer?.sandboxed,
+      true,
+      "Expected a sandboxed renderer process",
+    );
+  }
+
   window.once("closed", () => {
     verified = true;
     clearTimeout(deadline);

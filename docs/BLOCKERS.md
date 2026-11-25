@@ -4,5 +4,5 @@ Raise a blocker as soon as it is known. A blocked task passes the turn on to the
 
 | ID | Opened | Task | Description | Owner | Needs Ashley? | Unblock condition | Status |
 |---|---|---|---|---|---|---|---|
-| B-001 | 2026-11-25 | P0-01 | Electron's lazy binary fetch fails in Codex. Direct archive download passed checksum verification, but Chromium aborted during sandbox setup. No display or Xvfb was available. | GPT1 and GPT2 | If the Windows smoke test is needed | Reproduce a live blank window on a host with a working sandbox and display. | Open |
-| B-002 | 2026-11-25 | P0-01 | Committed Node v24.22.3 pin fails D-021. A disposable v26.13.1 metadata update passed strict install, check and build. | GPT1 | No | Align the committed Node pins and lockfile, then independently reproduce the checks. | Open |
+| B-001 | 2026-11-25 | P0-01 | Chromium aborted during sandbox setup in Codex. The first [Windows CI run](https://github.com/pfc-studio/product-factory-console/actions/runs/45680984982) failed with no job steps or logs available. | GPT1 and GPT2 | Only if the runner startup diagnostic requires owner access | Obtain a passing automated launch of the PR on a Windows runner with a working sandbox and display. | Open |
+| B-002 | 2026-11-25 | P0-01 | Previous pin v24.22.3 failed D-021 and engine-strict installation on the current LTS. All three pins now use v26.13.1. | GPT1 | No | Builder reproduced engine-strict install, check and build on v26.13.1. GPT2 can reproduce these in re-review. | Resolved |
