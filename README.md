@@ -2,12 +2,12 @@
 
 A Windows-first desktop console for making digital printable products: a simple surface (Make, Workflow, Review) over a research and self-improvement engine.
 
-Private repository. No licence has been chosen (all rights reserved).
+Private repository: https://github.com/pfc-studio/product-factory-console. No licence has been chosen (all rights reserved).
 
 ## How this repository is run
 Two AI roles build it with the owner, Ashley, approving:
 - **GPT1 · Builder** designs and writes the code.
-- **GPT2 · Planner & QA** writes task cards and acceptance tests, reviews and tests every change, and checks research, marketplace rules and listing quality.
+- **GPT2 · Plans & Quality** writes task cards and acceptance tests, reviews and tests every change, and checks research, marketplace rules and listing quality.
 
 Neither passes its own work. Ashley merges each PR after a PASS and decides anything in the stop-and-ask list.
 

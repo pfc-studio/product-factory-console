@@ -7,7 +7,7 @@ Before starting any turn read, in order: `docs/STATUS.md`, `docs/WORKFLOW.md`, t
 
 ## Roles (your role comes from your account's custom instructions)
 - **GPT1 · Builder:** writes code in `src/`, build tooling and its own unit tests; writes `docs/handovers/<ID>.md`. Never edits `docs/tasks/`, `tests/acceptance/` or review records. Never approves its own work.
-- **GPT2 · Planner & QA:** writes task cards, acceptance tests (`tests/acceptance/`), fixtures, golden cases, review records (`docs/reviews/`), research and config values; runs every check itself. Never writes production code in `src/`. Never passes work it wrote.
+- **GPT2 · Plans & Quality:** writes task cards, acceptance tests (`tests/acceptance/`), fixtures, golden cases, review records (`docs/reviews/`), research and config values; runs every check itself. Never writes production code in `src/`. Never passes work it wrote.
 - If your role is unclear, or STATUS.md says it is not your turn, stop and say so.
 
 ## Stack
@@ -42,7 +42,7 @@ Acceptance criteria met and reproduced by GPT2, `npm run check` passes, tests co
 2. `docs/STATUS.md` updated: Turn, Live branch, Open PR, Last done, Next, Blockers, Needs Ashley, one turn-log line.
 3. Commit and open or update the PR `[PFC] <ID> <title>`.
 4. Final line, exactly one line:
-   `NEXT → [merge PR #N, then ]paste the continuation prompt into GPT<1|2> · <Builder|Planner & QA> (<i9aa|i988>) · Codex · branch <branch>`
+   `NEXT → [merge PR #N, then ]paste the continuation prompt into GPT<1|2> · <Builder|Plans & Quality> (<i9aa|i988>) · Codex · branch <branch>`
 
 ## Style
 British spelling in docs and UI text. Plain labels in the UI. Small functions, clear names, comments only for why.

@@ -6,8 +6,8 @@ Assumed defaults are used until Ashley decides. Changing a Decided entry is a st
 | ID | Date | Status | Decision / default | Reason | Changed by | Revisit when |
 |---|---|---|---|---|---|---|
 | D-001 | 2026-11-25 | Decided | This is the only project. `docs/PLAN.md` is the only plan. | Owner instruction | Ashley | — |
-| D-002 | 2026-11-25 | Decided | Two roles: GPT1 · Builder (i9aa) builds; GPT2 · Planner & QA (i988) plans, writes acceptance tests, reviews and tests. Neither passes its own work. | Independent review | Ashley | — |
-| D-003 | 2026-11-25 | Decided | Shared space: private GitHub repo `product-factory-console` on Ashley's main GitHub account. Repo is the source of truth; chat memory is not. | Accounts cannot see each other's chats | Ashley | — |
+| D-002 | 2026-11-25 | Decided | Two roles: GPT1 · Builder (i9aa) builds; GPT2 · Plans & Quality (i988) plans, writes acceptance tests, reviews and tests. Neither passes its own work. | Independent review | Ashley | — |
+| D-003 | 2026-11-25 | Decided | Shared space: private GitHub repo `product-factory-console` on GitHub account `pfc-studio` (https://github.com/pfc-studio/product-factory-console). Repo is the source of truth; chat memory is not. | Accounts cannot see each other's chats | Ashley | — |
 | D-004 | 2026-11-25 | Assumed default | First marketplace: Etsy. Others later via new profiles. | Plan assumption | Ashley | Before Phase 1 close |
 | D-005 | 2026-11-25 | Assumed default | First product: undated weekly planner, A4 and US Letter PDF, plus guide. | Plan assumption | Ashley | Before Phase 3 |
 | D-006 | 2026-11-25 | Assumed default | Digital downloads only. | Plan assumption | Ashley | — |

@@ -38,4 +38,4 @@ Card: docs/tasks/<TASK-ID>.md
 ```
 
 ## Next task
-<ID> · Turn → GPT2 · Planner & QA
+<ID> · Turn → GPT2 · Plans & Quality

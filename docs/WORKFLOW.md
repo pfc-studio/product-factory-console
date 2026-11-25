@@ -7,7 +7,7 @@ This file is the operating protocol. It wins over chat memory. If anything here 
 | Role | Account | Owns | Never does |
 |---|---|---|---|
 | **GPT1 · Builder** | i9aa | Architecture, all code in `src/`, build tooling, unit tests for its own code, handover notes, fixes after review | Approves its own work; edits task cards or acceptance tests; merges its own PR |
-| **GPT2 · Planner & QA** | i988 | Backlog order, task cards (definition of ready), acceptance tests in `tests/acceptance/`, independent review and test of every GPT1 delivery, red-team of safety rules, research, marketplace profile checks, claims and listing quality, golden cases, weekly digest | Writes production code in `src/`; passes work it wrote itself; lowers a criterion to get a pass |
+| **GPT2 · Plans & Quality** | i988 | Backlog order, task cards (definition of ready), acceptance tests in `tests/acceptance/`, independent review and test of every GPT1 delivery, red-team of safety rules, research, marketplace profile checks, claims and listing quality, golden cases, weekly digest | Writes production code in `src/`; passes work it wrote itself; lowers a criterion to get a pass |
 | **Ashley (owner)** | — | Final authority. Merges PRs (one click), phase gates, anything in the stop-and-ask list | — |
 
 The repository is the only shared space. The two accounts cannot see each other's chats, so anything the other GPT needs must be committed.
@@ -24,7 +24,7 @@ Your role comes from your account's custom instructions. If they are missing, st
 - Every turn's final line, exactly one line, tells Ashley what to do next:
 
 ```
-NEXT → [merge PR #N, then ]paste the continuation prompt into GPT<1|2> · <Builder|Planner & QA> (<i9aa|i988>) · Codex · branch <branch>
+NEXT → [merge PR #N, then ]paste the continuation prompt into GPT<1|2> · <Builder|Plans & Quality> (<i9aa|i988>) · Codex · branch <branch>
 ```
 
 ## 3. Turn cycle

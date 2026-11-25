@@ -3,7 +3,7 @@
 Every item from the plan, plus items added at setup. Build in phase order; this is a backlog, not a promise.
 GPT2 owns ordering and turns items into task cards (`docs/tasks/<ID>.md`) that meet the definition of ready. Acceptance outlines below are starting points; the task card holds the binding criteria.
 
-**Owner:** GPT1 = Builder builds, GPT2 reviews. GPT2 = Planner & QA does it, GPT1 does not review unless asked (Ashley or an independent check signs off where noted). A = Ashley.
+**Owner:** GPT1 = Builder builds, GPT2 reviews. GPT2 = Plans & Quality does it, GPT1 does not review unless asked (Ashley or an independent check signs off where noted). A = Ashley.
 **Status:** Backlog · Ready (card written) · In progress · In review · Done (awaiting merge) · Done · Parked · Dropped
 
 ## Phases

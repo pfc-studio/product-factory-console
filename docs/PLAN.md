@@ -149,7 +149,7 @@ product-factory-console/
   tests/
     fixtures/  fictional products, hostile text samples
     golden/    prompt regression cases
-    acceptance/ acceptance tests written by Planner & QA
+    acceptance/ acceptance tests written by Plans & Quality
 ```
 
 ### Tooling

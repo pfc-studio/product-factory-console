@@ -8,7 +8,7 @@ Keep short. Update when a decision changes. The repository is the source of trut
 
 **Owner:** Ashley, solo seller in the UK (British spelling, GBP), part-time. Ashley approves anything that publishes, spends money or messages customers, and merges every PR.
 
-**Team:** GPT1 · Builder (i9aa) designs and builds in Codex. GPT2 · Planner & QA (i988) writes task cards and acceptance tests, reviews and tests every delivery, red-teams the safety rules, does research and marketplace checks, and writes the weekly digest. Neither passes its own work. Hand-offs go through `docs/STATUS.md` in the shared repo `product-factory-console`.
+**Team:** GPT1 · Builder (i9aa) designs and builds in Codex. GPT2 · Plans & Quality (i988) writes task cards and acceptance tests, reviews and tests every delivery, red-teams the safety rules, does research and marketplace checks, and writes the weekly digest. Neither passes its own work. Hand-offs go through `docs/STATUS.md` in the shared repo `pfc-studio/product-factory-console` (https://github.com/pfc-studio/product-factory-console).
 
 **Stack:** Electron (pinned), TypeScript strict, SQLite (better-sqlite3), Zod, Vitest, Playwright, ESLint, Prettier, electron-builder. One session partition per pane.
 
