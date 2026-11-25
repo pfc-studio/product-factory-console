@@ -2,6 +2,7 @@ import {
   appendFileSync,
   copyFileSync,
   cpSync,
+  mkdirSync,
   mkdtempSync,
   readFileSync,
   readdirSync,
@@ -145,18 +146,14 @@ test("rejects a disclosure rule marker marked verified", async () => {
   );
 });
 
-test("marketplace limits are read from YAML and never hard-coded in src", async () => {
-  const loadConfig = await loader();
-  const { etsy } = loadConfig(committed).marketplaces;
-  const values = new Set([
-    etsy.recheck_after_days,
-    ...Object.values(etsy.limits).map(({ value }) => value),
-    etsy.files.max_file_mb.value,
-    etsy.files.max_files_per_listing.value,
-  ]);
+function findHardCodedLimits(
+  sourceDirectory: string,
+  values: ReadonlySet<number | null>,
+): string[] {
+  // BigInt literals can be followed immediately by property access.
   const numericLiteral =
-    /(?<![\w.])(?:0[xob][\da-f_]+|(?:\d[\d_]*(?:\.[\d_]*)?|\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?)(?![\w.])/giu;
-  const matches = readdirSync(join(root, "src"), {
+    /(?<![\w.])(?:(?:0[xob][\da-f_]+|\d[\d_]*)n(?!\w)|(?:0[xob][\da-f_]+|(?:\d[\d_]*(?:\.[\d_]*)?|\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?)(?![\w.]))/giu;
+  return readdirSync(sourceDirectory, {
     recursive: true,
     withFileTypes: true,
   })
@@ -168,11 +165,52 @@ test("marketplace limits are read from YAML and never hard-coded in src", async 
         .flatMap((line, index) => {
           const literals = line.match(numericLiteral) ?? [];
           const hasLimit = literals.some((literal) =>
-            values.has(Number(literal.replaceAll("_", ""))),
+            values.has(Number(literal.replaceAll("_", "").replace(/n$/iu, ""))),
           );
           return hasLimit ? [`${file}:${index + 1}: ${line.trim()}`] : [];
         });
     });
+}
 
-  expect(matches).toEqual([]);
+test("marketplace limits are read from YAML and never hard-coded in src", async () => {
+  const loadConfig = await loader();
+  const { etsy } = loadConfig(committed).marketplaces;
+  const values = new Set([
+    etsy.recheck_after_days,
+    ...Object.values(etsy.limits).map(({ value }) => value),
+    etsy.files.max_file_mb.value,
+    etsy.files.max_files_per_listing.value,
+  ]);
+
+  expect(findHardCodedLimits(join(root, "src"), values)).toEqual([]);
 });
+
+test.each([
+  "Number(140n)",
+  "140n",
+  "Number(0x8cn)",
+  "Number(0o214n)",
+  "Number(0b10001100n)",
+  "Number(1_4_0n)",
+  "Number(140n.toString())",
+  "140",
+  "0x8c",
+  'Number("140")',
+  'parseInt("140", 10)',
+])(
+  "reports a planted limit written as %s with its file and line",
+  (expression) => {
+    const sourceDirectory = join(configDirectory, "src");
+    mkdirSync(sourceDirectory);
+    const probe = join(sourceDirectory, "pfc-limit-probe.ts");
+    const limitLine = `export const titleMaxChars = ${expression};`;
+    writeFileSync(
+      probe,
+      `export const scale140n = Number(1_400n) * 0.20;\n${limitLine}\n`,
+    );
+
+    expect(findHardCodedLimits(sourceDirectory, new Set([140]))).toEqual([
+      `${probe}:2: ${limitLine}`,
+    ]);
+  },
+);
