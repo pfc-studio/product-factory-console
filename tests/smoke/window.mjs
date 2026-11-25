@@ -17,6 +17,21 @@ function fail(error) {
   app.exit(1);
 }
 
+async function capturePresentedFrame(contents) {
+  // The page load event can precede the compositor's first frame.
+  try {
+    return await new Promise((resolve) => {
+      // End the subscription after Electron's native callback has returned.
+      contents.beginFrameSubscription(false, (image) =>
+        setImmediate(resolve, image),
+      );
+      contents.invalidate();
+    });
+  } finally {
+    contents.endFrameSubscription();
+  }
+}
+
 async function verifyWindow(window) {
   const contents = window.webContents;
 
@@ -47,7 +62,7 @@ async function verifyWindow(window) {
 
   const screenshotPath = process.env.PFC_SMOKE_SCREENSHOT;
   if (screenshotPath) {
-    const screenshot = await contents.capturePage();
+    const screenshot = await capturePresentedFrame(contents);
     assert.ok(!screenshot.isEmpty(), "Expected a window screenshot");
     await writeFile(screenshotPath, screenshot.toPNG());
   }
