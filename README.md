@@ -2,7 +2,7 @@
 
 A Windows-first desktop console for making digital printable products: a simple surface (Make, Workflow, Review) over a research and self-improvement engine.
 
-Private repository: https://github.com/pfc-studio/product-factory-console. No licence has been chosen (all rights reserved).
+Public repository: https://github.com/pfc-studio/product-factory-console. No licence has been chosen (all rights reserved).
 
 ## How this repository is run
 Two AI roles build it with the owner, Ashley, approving:
