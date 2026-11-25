@@ -1,0 +1,54 @@
+# Policy: safety rules the console enforces. The learning loop can never edit this file.
+# Changing anything here is a stop-and-ask item for Ashley.
+version: 1
+effective_date: 2026-11-25
+
+actions:
+  publish: never_automatic          # owner approves the exact version; console never publishes
+  spend_money: never_automatic
+  message_customers: never_automatic
+
+untrusted_sources: [ai_output, pane_content, web_pages, messages, imported_csv, fixtures]
+untrusted_can_change_rules: false
+untrusted_can_trigger_actions: false
+
+checks:
+  unknown_counts_as: fail
+  not_run_counts_as: fail
+
+approval:
+  bind_to: [file_hashes, text_hash, marketplace_profile_version]
+  invalidate_on_change: true
+
+panes:
+  context_isolation: true
+  node_integration: false
+  sandbox: true
+  web_security: true
+  partition_per_pane: true
+  deny_permissions_by_default: true
+  deny_new_windows: true
+  navigation_allowlist_required: true
+  auto_send: false                  # copy and paste only until terms checked (D-007)
+
+secrets:
+  storage: os_credential_store
+  allowed_in: []                    # never in logs, prompts, database or repository
+
+learning_loop:
+  may_propose: [prompt_versions, workflow_versions]
+  may_apply_without_owner: false
+  may_edit: []                      # never policy, checks or approvals
+  requires_golden_test: true
+  reversible: true
+  min_cases_for_winner: 30          # D-018; below this results are directional only
+
+money:
+  storage: integer_minor_units
+  ai_spend_cap_gbp_per_month: 20    # only if API access is added (D-014)
+  dev_tools_cap_gbp: 0
+
+data:
+  real_customer_data_in_repo: false
+  research_brief_stale_after_days: 30
+  daily_backup: true

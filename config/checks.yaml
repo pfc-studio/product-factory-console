@@ -1,0 +1,50 @@
+# Checks: which preflight and listing checks exist and which are mandatory.
+# Mandatory checks must PASS. Unknown or not run counts as FAIL (policy.yaml).
+version: 1
+effective_date: 2026-11-25
+
+mandatory:
+  - id: page_size
+    description: Every page matches the declared size (A4 210x297 mm, US Letter 8.5x11 in) within tolerance
+    tolerance_mm: 0.5
+    phase: 3
+  - id: fonts_embedded_and_licensed
+    description: All fonts embedded and present in the licence register
+    phase: 3
+  - id: rights
+    description: Every asset has a recorded licence or is original work
+    phase: 3
+  - id: preview_match
+    description: Preview images rendered from the exact packaged files (hash match)
+    phase: 3
+  - id: claims
+    description: No unsupported or risky claims without recorded evidence
+    phase: 1
+  - id: marketplace_limits
+    description: Title, tags and description within the marketplace profile limits
+    phase: 1
+  - id: profile_fresh
+    description: Marketplace profile verified and not older than recheck_after_days
+    phase: 1
+
+advisory:
+  - id: text_overflow
+    description: No text clipped or overflowing boxes
+    phase: 3
+    promote_to_mandatory: true      # mandatory once the check is reliable
+  - id: duplicate_tags
+    description: No duplicate or heavily overlapping tags
+    phase: 1
+  - id: readability
+    description: Description readability within target range
+    phase: 2
+  - id: keyword_coverage
+    description: Main keywords appear in title and tags
+    phase: 2
+
+risky_claims:                       # starting list; GPT2 owns and extends it
+  - guaranteed results
+  - health or medical benefits
+  - before and after prices or fake discounts
+  - 'best or number one without evidence'
+  - official or endorsed by a brand without permission

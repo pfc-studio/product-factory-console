@@ -1,0 +1,8 @@
+Write 5 title options for a digital printable product.
+Product: {{product_name}}
+For: {{audience}}
+Main benefit: {{key_benefit}}
+Marketplace: {{marketplace}} (keep each title within {{title_max_chars}} characters)
+
+Rules: plain UK English; no claims you cannot back up (no guarantees, health claims or fake discounts); no repeated phrases; put the most important words first.
+Return only a numbered list of 5 titles.

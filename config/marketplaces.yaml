@@ -1,0 +1,61 @@
+# Marketplace profiles: editable settings, not facts.
+# Every value below is UNVERIFIED (starting point from the plan, check date 2026-11-25).
+# GPT2 verifies against the marketplace's official pages (task P0-05) and records
+# source URL and access date per field. Re-check before every release.
+
+etsy:
+  display_name: Etsy
+  currency: GBP                    # shop currency; prices stored in integer minor units
+  effective_date: 2026-11-25       # date these values were last checked
+  recheck_after_days: 90
+  verify_before_release: true
+  status: unverified               # unverified | verified
+  limits:
+    title_max_chars:
+      value: 140
+      verified: false              # unverified, check date
+      source: null
+      accessed: null
+    tags_max_count:
+      value: 13
+      verified: false              # unverified, check date
+      source: null
+      accessed: null
+    tag_max_chars:
+      value: 20
+      verified: false              # unverified, check date
+      source: null
+      accessed: null
+    description_max_chars:
+      value: null                  # unknown; unknown is not zero
+      verified: false
+      source: null
+      accessed: null
+  files:
+    allowed_types:
+      value: [pdf, zip]
+      verified: false              # unverified, check date
+      source: null
+      accessed: null
+    max_file_mb:
+      value: null                  # unknown
+      verified: false
+      source: null
+      accessed: null
+    max_files_per_listing:
+      value: null                  # unknown
+      verified: false
+      source: null
+      accessed: null
+  eligibility:
+    ai_disclosure_required:
+      value: check_current_rules   # treat as required until verified (D-017)
+      verified: false
+      source: null
+      accessed: null
+    creativity_standards:
+      value: check_current_rules
+      verified: false
+      source: null
+      accessed: null
+  disclosure_snippet: null         # text GPT2 drafts once the rule is verified (E-08)

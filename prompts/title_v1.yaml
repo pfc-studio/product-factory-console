@@ -1,0 +1,9 @@
+id: title_v1
+purpose: Generate 5 title variants for a printable
+variables: [product_name, audience, key_benefit, marketplace]
+template: file://prompts/title_v1.txt
+output_format: list of 5, each under the marketplace title limit
+checks: [length, no_unsupported_claims, no_duplicate_phrases]
+golden_set: tests/golden/title/
+status: draft
+parent: null

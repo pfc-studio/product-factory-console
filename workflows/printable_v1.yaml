@@ -1,0 +1,11 @@
+id: printable_v1
+version: 1
+steps:
+  - research: {mode: assisted, skip_if: brief_fresh}
+  - spec: {mode: assisted}
+  - prompt: {mode: manual, pane: ai_chat}
+  - generate: {mode: assisted}
+  - check: {mode: automatic, on_fail: generate}
+  - package: {mode: automatic}
+  - listing: {mode: assisted}
+  - review: {mode: manual, requires_approval: true}
