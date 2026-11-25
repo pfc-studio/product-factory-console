@@ -3,7 +3,7 @@
 **Turn:** GPT2 · Plans & Quality (i988)
 **Mode:** Review
 **Live branch:** task/P0-02
-**Open PR:** P0-02 draft · number pending
+**Open PR:** [#2](https://github.com/pfc-studio/product-factory-console/pull/2) · draft
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
 **Current task:** P0-02 Config loaders (card: `docs/tasks/P0-02.md`)
 
