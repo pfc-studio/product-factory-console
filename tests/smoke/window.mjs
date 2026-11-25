@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { app } from "electron";
 
@@ -42,6 +43,13 @@ async function verifyWindow(window) {
       true,
       "Expected a sandboxed renderer process",
     );
+  }
+
+  const screenshotPath = process.env.PFC_SMOKE_SCREENSHOT;
+  if (screenshotPath) {
+    const screenshot = await contents.capturePage();
+    assert.ok(!screenshot.isEmpty(), "Expected a window screenshot");
+    await writeFile(screenshotPath, screenshot.toPNG());
   }
 
   window.once("closed", () => {

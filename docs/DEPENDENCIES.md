@@ -12,9 +12,18 @@ P0-01 pins Node v26.13.1 in `.nvmrc`, `package.json` and the npm lockfile. Elect
 | `typescript-eslint` | 8.74.0 | Parse TypeScript and apply recommended lint rules | MIT | Maintained v8 line with ESLint 10 and TypeScript 6.0 support | TypeScript parser alone, without TypeScript-specific rules |
 | `vitest` | 5.1.2 | Run scaffold unit tests and mock the Electron window API | MIT | Maintained stable release line supporting Node 24 | Node's test runner, with separate compile and mocking setup |
 
+## Lightning CSS development dependency
+
+On 2026-11-25 at 19:37 UTC, Ashley approved retaining the free, MPL-2.0 Lightning CSS packages in the development toolchain under WORKFLOW §10.11. See [D-025](DECISIONS.md) and [B-003](BLOCKERS.md).
+
+The locked path is `vitest@5.1.2` (dev dependency) → `vite@8.3.8` (required peer) → `lightningcss@1.33.0` → 11 optional platform bindings at `1.33.0`, including `lightningcss-win32-x64-msvc` and `lightningcss-win32-arm64-msvc`. The lockfile marks Vite, Lightning CSS and all those bindings as dev-only. Lightning CSS and its native bindings declare MPL-2.0.
+
+The current app build compiles the TypeScript source and copies the HTML shell. The project has no production npm dependencies, and this chain is absent from `dist` and the production dependency tree. The installer script is a stub. Recheck this scope when installer packaging is introduced.
+
 ## GitHub Actions
 
 | Action | Exact version | Reason | Licence | Maintenance at P0-01 | Lighter alternative |
 |---|---|---|---|---|---|
 | `actions/checkout` | v6.1.0 (`d23441a48e516b6c34aea4fa41551a30e30af803`) | Check out the exact PR head on the Windows runner | MIT | Maintained by GitHub | Plain `git` with explicit authentication and ref handling |
 | `actions/setup-node` | v6.5.0 (`249970729cb0ef3589644e2896645e5dc5ba9c38`) | Install the runtime pinned in `.nvmrc` | MIT | Maintained by GitHub | Runner-provided Node, which can drift from the pin |
+| `actions/upload-artifact` | v7.0.2 (`cf430e030ddbb5b0abf93d22962f4752f3646cd9`) | Keep the Windows smoke log and app screenshot with the workflow run | [MIT](https://github.com/actions/upload-artifact/blob/cf430e030ddbb5b0abf93d22962f4752f3646cd9/LICENSE) | Maintained by GitHub | Job console log, which cannot retain the screenshot |

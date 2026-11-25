@@ -19,4 +19,23 @@ jobs:
           node-version-file: .nvmrc
           package-manager-cache: false
       - run: npm ci --engine-strict
-      - run: npm run test:smoke
+      - name: Run window smoke
+        id: smoke
+        shell: pwsh
+        env:
+          PFC_SMOKE_SCREENSHOT: ${{ runner.temp }}/pfc-smoke-window.png
+        run: |
+          $log = Join-Path $env:RUNNER_TEMP 'pfc-smoke.log'
+          npm.cmd run test:smoke 2>&1 | Tee-Object -FilePath $log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $screenshot = Get-Item -LiteralPath $env:PFC_SMOKE_SCREENSHOT
+          if ($screenshot.Length -eq 0) { throw 'Window smoke screenshot is empty.' }
+      - name: Upload window smoke evidence
+        if: ${{ !cancelled() && (steps.smoke.outcome == 'success' || steps.smoke.outcome == 'failure') }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: windows-smoke-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/pfc-smoke.log
+            ${{ runner.temp }}/pfc-smoke-window.png
+          if-no-files-found: error
