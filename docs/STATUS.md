@@ -3,7 +3,7 @@
 **Turn:** GPT2 · Plans & Quality (i988)
 **Mode:** Review
 **Live branch:** task/P0-01
-**Open PR:** to be opened
+**Open PR:** [#1](https://github.com/pfc-studio/product-factory-console/pull/1)
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
 **Current task:** P0-01 Scaffold (card: `docs/tasks/P0-01.md`)
 
