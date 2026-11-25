@@ -12,13 +12,22 @@ P0-01 pins Node v26.13.1 in `.nvmrc`, `package.json` and the npm lockfile. Elect
 | `typescript-eslint` | 8.74.0 | Parse TypeScript and apply recommended lint rules | MIT | Maintained v8 line with ESLint 10 and TypeScript 6.0 support | TypeScript parser alone, without TypeScript-specific rules |
 | `vitest` | 5.1.2 | Run scaffold unit tests and mock the Electron window API | MIT | Maintained stable release line supporting Node 24 | Node's test runner, with separate compile and mocking setup |
 
+## Config loaders (P0-02)
+
+| Package | Exact version | Reason | Licence | Maintenance | Unpacked bytes | Lighter alternative |
+|---|---|---|---|---|---:|---|
+| [`yaml`](https://registry.npmjs.org/yaml/2.9.1) | 2.9.1 | Read the committed YAML with bundled types and parser diagnostics | ISC | Stable 2.x, released 2026-09-11 | 686,297 | A restricted local parser adds upkeep for nesting, comments and duplicate keys |
+| [`zod`](https://registry.npmjs.org/zod/4.6.7) | 4.6.7 | Validate the three documents with the card’s schema library | MIT | Stable 4.x, released 2026-10-12 | 6,148,944 | Valibot 1.5.0 is 1,865,457 bytes unpacked. The card specifies Zod |
+
+Both packages have zero runtime dependencies.
+
 ## Lightning CSS development dependency
 
 On 2026-11-25 at 19:37 UTC, Ashley approved retaining the free, MPL-2.0 Lightning CSS packages in the development toolchain under WORKFLOW §10.11. See [D-025](DECISIONS.md) and [B-003](BLOCKERS.md).
 
 The locked path is `vitest@5.1.2` (dev dependency) → `vite@8.3.8` (required peer) → `lightningcss@1.33.0` → 11 optional platform bindings at `1.33.0`, including `lightningcss-win32-x64-msvc` and `lightningcss-win32-arm64-msvc`. The lockfile marks Vite, Lightning CSS and all those bindings as dev-only. Lightning CSS and its native bindings declare MPL-2.0.
 
-The current app build compiles the TypeScript source and copies the HTML shell. The project has no production npm dependencies, and this chain is absent from `dist` and the production dependency tree. The installer script is a stub. Recheck this scope when installer packaging is introduced.
+The current app build compiles the TypeScript source and copies the HTML shell. The Lightning CSS chain is absent from `dist` and the production dependency tree. The installer script is a stub. Recheck this scope when installer packaging is introduced.
 
 ## GitHub Actions
 

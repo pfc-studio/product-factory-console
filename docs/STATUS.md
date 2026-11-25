@@ -1,13 +1,15 @@
 # STATUS (the baton)
 
-**Turn:** GPT1 · Builder (i9aa)
-**Mode:** Build after merge
-**Live branch:** main
-**Open PR:** [#1](https://github.com/pfc-studio/product-factory-console/pull/1) · awaiting Ashley’s merge
+**Turn:** GPT2 · Plans & Quality (i988)
+**Mode:** Review
+**Live branch:** task/P0-02
+**Open PR:** P0-02 draft · number pending
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
-**Current task:** P0-02 Config loaders, after the scaffold merges (card: `docs/tasks/P0-02.md`)
+**Current task:** P0-02 Config loaders (card: `docs/tasks/P0-02.md`)
 
 ## Last done
+- 2026-11-25 · GPT1 · P0-02 config loaders and test evidence ready for independent review. [Handover](handovers/P0-02.md)
+- 2026-11-25 · Chief · Squash-merged [PR #1](https://github.com/pfc-studio/product-factory-console/pull/1) as [`620a283`](https://github.com/pfc-studio/product-factory-console/commit/620a283) and deleted `task/P0-01`.
 - 2026-11-25 · GPT2 · P0-01 re-review PASS on `0f1e21a`. All eight criteria passed, including the independently rerun Windows smoke. B-004 is resolved. [Review](reviews/P0-01.md#re-review-on-0f1e21a) · [Windows job](https://github.com/pfc-studio/product-factory-console/actions/runs/45694670138/job/139505678136)
 - 2026-11-25 · GPT1 · Used Chief’s authorisation for one B-004 fix. Added a capture guard and switched the Windows smoke to a presented frame. Local checks passed. See the [handover](handovers/P0-01.md#b-004-windows-screenshot-addendum) and [Windows evidence](https://github.com/pfc-studio/product-factory-console/pull/1#b-004-final-head-windows-evidence).
 - 2026-11-25 · GPT2 · P0-01 re-review FAIL. Seven criteria passed. The fresh Windows smoke failed with `UnknownVizError` on `4813532` after the earlier run on that SHA passed. B-003 remains resolved.
@@ -19,13 +21,12 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. Ashley · Merge PR #1.
-2. GPT1 · Start P0-02 from the merged `main` and create `task/P0-02`. Write and run the failing validation tests before implementing the loaders.
+1. GPT2 · Review P0-02 on `task/P0-02`, reproduce the handover checks and verify Windows smoke on the PR head.
 
-NEXT → merge PR #1, then paste the continuation prompt into GPT1 · Builder (i9aa) · Codex · branch main
+NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-02
 
 ## Blockers
-B-001 through B-004 are resolved. P0-02 depends on the scaffold merge. See [the blocker register](BLOCKERS.md).
+B-001 through B-004 are resolved. No open P0-02 blockers. See [the blocker register](BLOCKERS.md).
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
@@ -37,6 +38,8 @@ B-001 through B-004 are resolved. P0-02 depends on the scaffold merge. See [the 
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
+- 2026-11-25 · GPT1 · Handed P0-02 to GPT2 for independent review on `task/P0-02`.
+- 2026-11-25 · Chief · Squash-merged PR #1 as `620a283`.
 - 2026-11-25 · GPT2 · P0-01 PASS after independent Windows smoke. B-004 resolved. P0-02 handed to GPT1 on `main` after PR #1 merges.
 - 2026-11-25 · GPT1 · Implemented Chief’s one authorised B-004 fix and handed P0-01 back to GPT2 on `task/P0-01`.
 - 2026-11-25 · GPT2 · P0-01 re-review FAIL on `4813532`. B-004 opened and another fix round awaits Ashley. Handed back to GPT1 on `task/P0-01`.
