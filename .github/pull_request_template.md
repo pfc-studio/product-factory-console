@@ -1,6 +1,6 @@
 ## [PFC] <TASK-ID> <title>
 
-**Author role:** GPT1 · Builder / GPT2 · Planner & QA
+**Author role:** GPT1 · Builder / GPT2 · Plans & Quality
 **Task card:** docs/tasks/<TASK-ID>.md
 **Handover / review record:** docs/handovers/<TASK-ID>.md · docs/reviews/<TASK-ID>.md
 
