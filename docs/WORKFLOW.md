@@ -76,7 +76,7 @@ Acceptance criteria and `tests/acceptance/` belong to GPT2. GPT1 must not change
 - Docs updated (BACKLOG status, DECISIONS if a decision was made, MEMORY if a durable fact changed)
 - Dependencies added are listed with reason, licence, maintenance status and a lighter alternative
 - No credentials, personal data or real customer data in the diff
-- Windows-only checks either run (with result) or listed as NOT RUN for Ashley's Windows smoke test
+- Windows-only checks run in CI with linked results. Record checks awaiting automation or a CI result as NOT RUN.
 
 ## 6. Status labels
 
@@ -161,7 +161,7 @@ Next week: <planned task IDs>
 
 ## 14. Windows and environment limits
 
-Codex runs in a Linux container. Windows-only behaviour (installer, credential store, window chrome, file paths with drive letters, printing) is either covered by the Windows CI job once it exists or listed in the handover as NOT RUN under *Windows smoke test*. At each phase close the digest lists the Windows smoke test steps for Ashley (5 minutes or less).
+Codex runs in a Linux container. Verify Windows-only behaviour (installer, credential store, window chrome, file paths with drive letters, printing) with automated checks on the Windows CI runner. Record the run and tested revision in the handover. If evidence is unavailable, record the check as NOT RUN and state the automation or runner needed. At phase close, the digest records the relevant Windows CI results and any outstanding checks.
 
 ## 15. Hygiene
 

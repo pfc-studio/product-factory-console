@@ -2,7 +2,7 @@
 
 A Windows-first desktop console for making digital printable products: a simple surface (Make, Workflow, Review) over a research and self-improvement engine.
 
-Private repository: https://github.com/pfc-studio/product-factory-console. No licence has been chosen (all rights reserved).
+Public repository: https://github.com/pfc-studio/product-factory-console. No licence has been chosen (all rights reserved).
 
 ## How this repository is run
 Two AI roles build it with the owner, Ashley, approving:
@@ -27,3 +27,5 @@ Neither passes its own work. Ashley merges each PR after a PASS and decides anyt
 
 ## Commands (from Phase 0)
 `npm ci` · `npm run check` · `npm run dev` · `npm run test:e2e` · `npm run test:golden` · `npm run package`
+
+`npm run test:smoke` builds the app and checks a live Electron window. The Windows smoke workflow runs it on pull requests with the Node version pinned in `.nvmrc`. Local runs need a display and a working Chromium sandbox.

@@ -19,7 +19,7 @@
 - [ ] Safety rules touched: listed and tested
 - [ ] No credentials, personal data or real customer data
 - [ ] Dependencies added: listed in docs/DEPENDENCIES.md with licence
-- [ ] Windows-only checks: run in CI, or listed NOT RUN for smoke test
+- [ ] Windows-only checks: CI results linked or listed as NOT RUN with outstanding automation or runner needs
 - [ ] docs/STATUS.md updated (Turn, Live branch, Next)
 
 ### Review verdict (GPT2 only)
