@@ -1,0 +1,20 @@
+etsy:
+  display_name: Fictional shop
+  currency: GBP
+  effective_date: 2026-10-01
+  recheck_after_days: 10
+  verify_before_release: true
+  status: unverified
+  limits:
+    title_max_chars: { value: 321, verified: false, source: null, accessed: null }
+    tags_max_count: { value: 32, verified: false, source: null, accessed: null }
+    tag_max_chars: { value: 21, verified: false, source: null, accessed: null }
+    description_max_chars: { value: null, verified: false, source: null, accessed: null }
+  files:
+    allowed_types: { value: [pdf], verified: false, source: null, accessed: null }
+    max_file_mb: { value: null, verified: false, source: null, accessed: null }
+    max_files_per_listing: { value: null, verified: false, source: null, accessed: null }
+  eligibility:
+    ai_disclosure_required: { value: check_current_rules, verified: false, source: null, accessed: null }
+    creativity_standards: { value: check_current_rules, verified: false, source: null, accessed: null }
+  disclosure_snippet: null

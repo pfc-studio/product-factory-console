@@ -1,0 +1,7 @@
+version: 1
+effective_date: 2026-10-01
+mandatory:
+  - id: fictional_check
+    phase: 1
+advisory: []
+risky_claims: []

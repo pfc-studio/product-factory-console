@@ -23,7 +23,7 @@ GPT2 owns ordering and turns items into task cards (`docs/tasks/<ID>.md`) that m
 | ID | Item | Owner | Acceptance outline | Status |
 |---|---|---|---|---|
 | P0-01 | Scaffold: Electron + TypeScript strict, pinned Node and Electron, ESLint, Prettier, Vitest, `npm run check`, blank window | GPT1 | `npm ci` then `npm run check` pass from clean clone; app launches a blank window; versions pinned exactly; lockfile committed; dependency inventory written | Done (awaiting merge) |
-| P0-02 | Config loaders: `config/marketplaces.yaml`, `policy.yaml`, `checks.yaml` validated with Zod | GPT1 | Valid files load; invalid or missing field fails with a clear error (test); profile staleness computed from `effective_date` | Ready |
+| P0-02 | Config loaders: `config/marketplaces.yaml`, `policy.yaml`, `checks.yaml` validated with Zod | GPT1 | Valid files load; invalid or missing field fails with a clear error (test); profile staleness computed from `effective_date` | Done (awaiting merge) |
 | P0-03 | CI: GitHub Actions running `npm run check` on `windows-latest` and `ubuntu-latest` | GPT1 | Workflow file runs on PR; free tier only; no secrets needed; failure blocks merge recommendation | Ready |
 | P0-04 | Clickable mockup of Make, Workflow, Review (static HTML in `docs/mockup/`) | GPT2 | Opens in a browser offline; three screens match PLAN section 2; Ashley's comments captured in DECISIONS | Ready |
 | P0-05 | Verify Etsy rules and limits; date `marketplaces.yaml`; record AI disclosure requirement | GPT2 | Each value has source URL and access date; unverifiable values stay `unverified`; DECISIONS entry | Ready |
