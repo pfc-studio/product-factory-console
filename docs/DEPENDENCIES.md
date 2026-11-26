@@ -21,6 +21,15 @@ P0-01 pins Node v26.13.1 in `.nvmrc`, `package.json` and the npm lockfile. Elect
 
 Both packages have zero runtime dependencies.
 
+## Test harness (P0-06)
+
+| Package | Exact version | Reason | Licence | Maintenance | Unpacked bytes | Lighter alternative |
+|---|---|---|---|---|---:|---|
+| [`playwright`](https://registry.npmjs.org/playwright/1.65.1) | 1.65.1 | Discover and run the Electron launch test with the Playwright CLI and assertions | Apache-2.0 | Microsoft release dated 2026-11-13 | 5,064,151 | `playwright-core` plus Node’s test runner saves the runner package and requires local discovery and assertion code |
+| [`playwright-core`](https://registry.npmjs.org/playwright-core/1.65.1) | 1.65.1 | Playwright’s Electron launcher, locked as a transitive development dependency | Apache-2.0 | Same Microsoft release | 13,971,424 | The existing Electron smoke needs no new dependency and uses Electron’s own API |
+
+The two packages total 19,035,575 unpacked bytes. The test uses the project’s pinned Electron executable. [Release](https://github.com/microsoft/playwright/releases/tag/v1.65.1)
+
 ## Lightning CSS development dependency
 
 On 2026-11-25 at 19:37 UTC, Ashley approved retaining the free, MPL-2.0 Lightning CSS packages in the development toolchain under WORKFLOW §10.11. See [D-025](DECISIONS.md) and [B-003](BLOCKERS.md).

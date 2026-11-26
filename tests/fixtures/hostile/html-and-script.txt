@@ -1,0 +1,2 @@
+<p>Fictional planner note</p>
+<script>/* fictional fixture */</script>
