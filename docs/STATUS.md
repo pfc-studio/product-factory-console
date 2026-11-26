@@ -1,13 +1,14 @@
 # STATUS (the baton)
 
 **Turn:** GPT2 · Plans & Quality (i988)
-**Mode:** Independent review
+**Mode:** Independent review blocked on hosted reruns
 **Live branch:** task/P0-03
 **Open PR:** [#4](https://github.com/pfc-studio/product-factory-console/pull/4) · draft
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
 **Current task:** P0-03 Continuous integration on Windows and Linux
 
 ## Last done
+- 2026-11-26 · GPT2 · [FACT] P0-03 review FAIL on `3bf8e85`. Criteria 1–3 passed. Local probe failed as expected and restored checks passed 70/70. Criterion 4 is NOT RUN for independent hosted reproduction. [Review](reviews/P0-03.md)
 - 2026-11-26 · GPT1 · [FACT] Delivered P0-03 with local checks and clean, failing and restored CI evidence on both hosted runners. [Handover](handovers/P0-03.md)
 - 2026-11-26 · Chief · [FACT] At 17:30 London, squash-merged [PR #2](https://github.com/pfc-studio/product-factory-console/pull/2) into main as [`cb04656`](https://github.com/pfc-studio/product-factory-console/commit/cb04656).
 - 2026-11-26 · GPT2 · P0-02 re-review PASS on `505affa`. All five criteria passed. The HTML, TypeScript, JavaScript and BigInt probes exited 1 with their file and line. The clean check passed 69/69 and the Windows smoke log and screenshot were independently verified. B-007 is resolved. [Review](reviews/P0-02.md#re-review-on-505affa) · [Windows job](https://github.com/pfc-studio/product-factory-console/actions/runs/45853904823/job/140027119926)
@@ -31,18 +32,18 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. GPT2 · Independently reproduce P0-03, including the failing assertion and restored green checks on both runners. [Task card](tasks/P0-03.md) · [Handover](handovers/P0-03.md)
+1. GPT2 · On Ashley’s specific authorisation, rerun the P0-03 failure and restoration on both free hosted runners and record the new job links. PR #4 stays draft pending B-008. [Task card](tasks/P0-03.md) · [Review](reviews/P0-03.md)
 
 NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-03
 
 ## Blockers
-[FACT] No open P0-03 blockers. Live CI on a push to main and checks that depend on BRAINS.md are NOT RUN. [Blocker register](BLOCKERS.md)
+[FACT] B-008 is open. Automatic approval review rejected the historical CI rerun. The independent hosted failure and restoration, live push to `main` and BR(Ai)NS-dependent verification are NOT RUN. [Blocker register](BLOCKERS.md)
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
 2. P0-04 design feedback. Share preferences after automated checks pass or defer. Default is to defer. Non-blocking.
 
-[FACT] No new Ashley decision is needed for P0-03. PR #2 merged with the committed review on record.
+3. P0-03 hosted reruns (B-008). Authorise rerunning `45869762967` and then `45869938318` on both free standard runners, or defer. Default is to defer and keep PR #4 draft. Blocks the P0-03 review.
 
 ## Phase tracker
 | Phase | Started | Cap | Used | Exit criteria | Result |
@@ -50,6 +51,7 @@ NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Co
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
+- 2026-11-26 · GPT2 · [FACT] Recorded P0-03 review FAIL, opened B-008 and retained the review turn pending authorisation for independent hosted reruns.
 - 2026-11-26 · GPT1 · [FACT] Handed draft PR #4 and P0-03 CI evidence to GPT2 on `task/P0-03`.
 - 2026-11-26 · Chief · [FACT] Squash-merged PR #2 as `cb04656` at 17:30 London.
 - 2026-11-26 · GPT2 · P0-02 re-review PASS on `505affa`. B-007 resolved. PR #2 is with Chief for merge, then P0-03 goes to GPT1.
