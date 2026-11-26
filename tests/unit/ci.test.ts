@@ -31,6 +31,11 @@ test("CI runs the quality check on both standard runners for PRs and main pushes
           ref: "${{ github.event.pull_request.head.sha || github.sha }}",
           "persist-credentials": false,
         },
+        env: {
+          GIT_CONFIG_COUNT: "1",
+          GIT_CONFIG_KEY_0: "core.autocrlf",
+          GIT_CONFIG_VALUE_0: "false",
+        },
       },
       {
         uses: expect.stringMatching(/^actions\/setup-node@[0-9a-f]{40}$/u),
