@@ -5,13 +5,13 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
-  readdirSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { afterEach, beforeEach, expect, test } from "vitest";
+import { findHardCodedLimits } from "./hard-coded-limits.js";
 
 const root = resolve(__dirname, "../..");
 const committed = join(root, "config");
@@ -146,32 +146,6 @@ test("rejects a disclosure rule marker marked verified", async () => {
   );
 });
 
-function findHardCodedLimits(
-  sourceDirectory: string,
-  values: ReadonlySet<number | null>,
-): string[] {
-  // BigInt literals can be followed immediately by property access.
-  const numericLiteral =
-    /(?<![\w.])(?:(?:0[xob][\da-f_]+|\d[\d_]*)n(?!\w)|(?:0[xob][\da-f_]+|(?:\d[\d_]*(?:\.[\d_]*)?|\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?)(?![\w.]))/giu;
-  return readdirSync(sourceDirectory, {
-    recursive: true,
-    withFileTypes: true,
-  })
-    .filter((entry) => entry.isFile())
-    .flatMap((entry) => {
-      const file = join(entry.parentPath, entry.name);
-      return readFileSync(file, "utf8")
-        .split("\n")
-        .flatMap((line, index) => {
-          const literals = line.match(numericLiteral) ?? [];
-          const hasLimit = literals.some((literal) =>
-            values.has(Number(literal.replaceAll("_", "").replace(/n$/iu, ""))),
-          );
-          return hasLimit ? [`${file}:${index + 1}: ${line.trim()}`] : [];
-        });
-    });
-}
-
 test("marketplace limits are read from YAML and never hard-coded in src", async () => {
   const loadConfig = await loader();
   const { etsy } = loadConfig(committed).marketplaces;
@@ -214,3 +188,85 @@ test.each([
     ]);
   },
 );
+
+test.each([
+  "0x8c.valueOf()",
+  "140..valueOf()",
+  "0x8c.valueOf() + 0",
+  "Number(140n)",
+  "70 * 2",
+  "1.4e2",
+  "0b10001100",
+  "0o214",
+  "1_40",
+  "+'140'",
+  "parseInt('140')",
+  "parseFloat('140')",
+  "Number('14' + '0')",
+  "Number('140'.valueOf())",
+  "Number('140'['value' + 'Of']())",
+  "(Number)('140')",
+  "Number['parseInt']('8c', 16)",
+  "Number((320).toString(16))",
+  "BigInt('0x8c')",
+  "Number(0x46n * 2n)",
+  "parseInt((70 * 2).toString(16), 16)",
+  "-(-70 * 2)",
+  "(7 << 2) * 5",
+])(
+  "reports folded marketplace limit %s in TypeScript and JavaScript",
+  (expression) => {
+    const sourceDirectory = join(configDirectory, "src");
+    mkdirSync(sourceDirectory);
+    const limitLine = `export const titleMaxChars = ${expression};`;
+    const probes = ["probe.ts", "probe.mjs"].map((name) => {
+      const file = join(sourceDirectory, name);
+      writeFileSync(file, `// limit probe\n${limitLine}\n`);
+      return `${file}:2: ${limitLine}`;
+    });
+
+    expect(findHardCodedLimits(sourceDirectory, new Set([140])).sort()).toEqual(
+      probes.sort(),
+    );
+  },
+);
+
+test.each([
+  "70 * 3",
+  "Number('1_40')",
+  "parseInt('140', 8)",
+  "parseFloat('140.5')",
+  "parseInt((64 * 2).toString(16), 10)",
+  "'140'",
+  "'140'.valueOf()",
+  "'140'.toString()",
+  "runtimeValue('140')",
+  "70 * runtimeValue()",
+  "Number(70n * 2)",
+  "BigInt('140.5')",
+  "Number(70n / 0n)",
+  "Number(70n ** -2n)",
+  "(1).toString(1400)",
+  "Number('141') /* 140 */",
+])("leaves non-matching source clear for %s", (expression) => {
+  const sourceDirectory = join(configDirectory, "src");
+  mkdirSync(sourceDirectory);
+  writeFileSync(
+    join(sourceDirectory, "probe.mjs"),
+    `export const unrelated = ${expression};\n`,
+  );
+
+  expect(findHardCodedLimits(sourceDirectory, new Set([140]))).toEqual([]);
+});
+
+test("reports the folded limit on the correct line after a Unicode line break", () => {
+  const sourceDirectory = join(configDirectory, "src");
+  mkdirSync(sourceDirectory);
+  const probe = join(sourceDirectory, "probe.mjs");
+  const limitLine = "export const titleMaxChars = 70 * 2;";
+  writeFileSync(probe, `// limit probe\u2028${limitLine}`);
+
+  expect(findHardCodedLimits(sourceDirectory, new Set([140]))).toEqual([
+    `${probe}:2: ${limitLine}`,
+  ]);
+});
