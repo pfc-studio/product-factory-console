@@ -37,6 +37,7 @@ NEXT → paste the continuation prompt into GPT1 · Builder (i9aa) · Codex · b
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
 2. P0-04 design feedback. Share preferences after automated checks pass or defer. Default is to defer. Non-blocking.
 3. P0-02 third failed review (B-007). [APPLY] Authorise one fix limited to restoring literal HTML coverage, or park draft PR #2 so P0-03 can open a PR. Default is to keep #2 in draft and prepare P0-03 locally. This blocks P0-02 rework and merge. P0-03 local work can proceed.
+4. Separate PR #2 review submission. [FACT] Automatic approval review blocked the post as external messaging. [APPLY] Explicitly authorise this PR review or rely on the committed review record. Default is the committed record. Non-blocking for P0-03 local work.
 
 ## Phase tracker
 | Phase | Started | Cap | Used | Exit criteria | Result |
