@@ -1,13 +1,15 @@
 # STATUS (the baton)
 
-**Turn:** GPT1 · Builder (i9aa)
-**Mode:** P0-03 reviewed, awaiting merge
-**Live branch:** main
-**Open PR:** [#4](https://github.com/pfc-studio/product-factory-console/pull/4) · PASS, awaiting Chief’s merge
+**Turn:** GPT2 · Plans & Quality (i988)
+**Mode:** P0-06 Builder harness, awaiting independent review
+**Live branch:** task/P0-06
+**Open PR:** P0-06 draft to be opened
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
-**Current task:** P0-03 Continuous integration on Windows and Linux
+**Current task:** P0-06 Test harness and fixtures
 
 ## Last done
+- 2026-11-26 · GPT1 · [FACT] Delivered the P0-06 harness. Local quality check passed 72/72, Playwright listed one Electron launch test, and the empty golden suite reported `0 cases`. [Handover](handovers/P0-06.md)
+- 2026-11-26 · Chief · [FACT] At 19:12 London, squash-merged [PR #4](https://github.com/pfc-studio/product-factory-console/pull/4) into main as [`4525258`](https://github.com/pfc-studio/product-factory-console/commit/4525258).
 - 2026-11-26 · GPT2 · [FACT] P0-03 PASS on `4e65b7d`. The independent probe failed at the named assertion on Windows and Ubuntu. Both restored jobs and the clean local check passed 70/70. B-008 is resolved. [Review](reviews/P0-03.md#independent-hosted-reruns)
 - 2026-11-26 · GPT2 · [FACT] P0-03 review FAIL on `3bf8e85`. Criteria 1–3 passed. Local probe failed as expected and restored checks passed 70/70. Criterion 4 is NOT RUN for independent hosted reproduction. [Review](reviews/P0-03.md)
 - 2026-11-26 · GPT1 · [FACT] Delivered P0-03 with local checks and clean, failing and restored CI evidence on both hosted runners. [Handover](handovers/P0-03.md)
@@ -33,13 +35,15 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. Chief · Merge PR #4.
-2. GPT1 · From `main`, take the Builder portion of P0-06. P0-04 and P0-05 are queued for GPT2. [P0-06 task card](tasks/P0-06.md)
+1. GPT2 · Reproduce criterion 3 on `task/P0-06` and record the independent verdict. Criteria 1, 2 and 4 are GPT2’s fixture work. [P0-06 task card](tasks/P0-06.md) · [Handover](handovers/P0-06.md)
+2. GPT2 · P0-04 and P0-05 remain queued.
 
-NEXT → merge PR #4, then paste the continuation prompt into GPT1 · Builder (i9aa) · Codex · branch main
+NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-06
 
 ## Blockers
-[FACT] No open P0-03 blockers. B-008 is resolved. Live push to `main` and BR(Ai)NS-dependent verification are NOT RUN. [Blocker register](BLOCKERS.md)
+[FACT] P0-03 push CI passed on `main` at `4525258`. B-008 is resolved. [CI run](https://github.com/pfc-studio/product-factory-console/actions/runs/45881853759) · [Blocker register](BLOCKERS.md)
+
+[FACT] P0-06 Windows Playwright launch and fixture criteria are NOT RUN. BR(Ai)NS-dependent verification is NOT RUN. [Handover](handovers/P0-06.md)
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
@@ -52,6 +56,8 @@ NEXT → merge PR #4, then paste the continuation prompt into GPT1 · Builder (i
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
+- 2026-11-26 · GPT1 · [FACT] Handed the P0-06 Playwright and Vitest harness to GPT2 on `task/P0-06`.
+- 2026-11-26 · Chief · [FACT] Squash-merged PR #4 as `4525258` at 19:12 London.
 - 2026-11-26 · GPT2 · [FACT] P0-03 PASS after Chief-authorised Windows and Ubuntu reruns. Closed B-008 and handed PR #4 to Chief for merge.
 - 2026-11-26 · GPT2 · [FACT] Recorded P0-03 review FAIL, opened B-008 and retained the review turn pending authorisation for independent hosted reruns.
 - 2026-11-26 · GPT1 · [FACT] Handed draft PR #4 and P0-03 CI evidence to GPT2 on `task/P0-03`.

@@ -39,3 +39,5 @@ jobs:
             ${{ runner.temp }}/pfc-smoke.log
             ${{ runner.temp }}/pfc-smoke-window.png
           if-no-files-found: error
+      - name: Run Electron end-to-end test
+        run: npm run test:e2e
