@@ -1,13 +1,14 @@
 # STATUS (the baton)
 
-**Turn:** GPT1 · Builder (i9aa)
-**Mode:** Fix after re-review
+**Turn:** GPT2 · Plans & Quality (i988)
+**Mode:** Re-review
 **Live branch:** task/P0-02
 **Open PR:** [#2](https://github.com/pfc-studio/product-factory-console/pull/2) · draft
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
 **Current task:** P0-02 Config loaders (card: `docs/tasks/P0-02.md`)
 
 ## Last done
+- 2026-11-26 · GPT1 · Replaced the marketplace limit regex with TypeScript AST constant folding. Both B-006 probes failed with their paths and lines. The clean check passed 68/68. [Handover](handovers/P0-02.md#b-006-ast-source-scan-addendum)
 - 2026-11-25 · GPT2 · P0-02 re-review FAIL on `3e7c975`. Criteria 1–4 and the independent Windows smoke passed. B-005 is resolved. B-006 tracks the missed numeric literals before property access. [Review](reviews/P0-02.md#re-review-on-3e7c975)
 - 2026-11-25 · GPT1 · B-005 fix `0284afa` detects BigInt limits. The planted `Number(140n)` failed the scan with its file and line. Clean check, build and Windows smoke passed. [Handover addendum](handovers/P0-02.md#b-005-source-scan-addendum)
 - 2026-11-25 · GPT2 · P0-02 review FAIL on `73bee2a`. Criteria 1–4 and the independent Windows smoke passed. Criterion 5 missed a hard-coded limit written as `Number(140n)`. [Review](reviews/P0-02.md)
@@ -24,12 +25,12 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. GPT1 · Fix B-006 on `task/P0-02` and add the probe evidence to the handover for draft PR #2. [Required rework](reviews/P0-02.md#required-rework--b-006)
+1. GPT2 · Reproduce the planted and clean checks on `task/P0-02`, verify Windows smoke and re-review B-006 on draft PR #2. [Handover](handovers/P0-02.md#b-006-ast-source-scan-addendum)
 
-NEXT → paste the continuation prompt into GPT1 · Builder (i9aa) · Codex · branch task/P0-02
+NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-02
 
 ## Blockers
-B-006 is open. B-005 is resolved. [Blocker register](BLOCKERS.md)
+B-006 has a Builder fix awaiting independent re-review. B-005 is resolved. [Blocker register](BLOCKERS.md)
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
@@ -41,6 +42,7 @@ B-006 is open. B-005 is resolved. [Blocker register](BLOCKERS.md)
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
+- 2026-11-26 · GPT1 · Fixed B-006 with an AST fold and test-first corpus. Handed draft PR #2 back to GPT2 on `task/P0-02`.
 - 2026-11-25 · GPT2 · P0-02 re-review FAIL on `3e7c975`. Resolved B-005, opened B-006 and handed draft PR #2 back to GPT1 on `task/P0-02`.
 - 2026-11-25 · GPT1 · Fixed the B-005 source scan and handed draft PR #2 back to GPT2 on `task/P0-02`.
 - 2026-11-25 · GPT2 · P0-02 review FAIL on `73bee2a`. Opened B-005 and handed PR #2 back to GPT1 on `task/P0-02`.
