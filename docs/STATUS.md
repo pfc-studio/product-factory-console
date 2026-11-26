@@ -3,12 +3,12 @@
 **Turn:** GPT2 · Plans & Quality (i988)
 **Mode:** P0-06 Builder harness, awaiting independent review
 **Live branch:** task/P0-06
-**Open PR:** P0-06 draft to be opened
+**Open PR:** [#5](https://github.com/pfc-studio/product-factory-console/pull/5) · draft, awaiting GPT2 review
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
 **Current task:** P0-06 Test harness and fixtures
 
 ## Last done
-- 2026-11-26 · GPT1 · [FACT] Delivered the P0-06 harness. Local quality check passed 72/72, Playwright listed one Electron launch test, and the empty golden suite reported `0 cases`. [Handover](handovers/P0-06.md)
+- 2026-11-26 · GPT1 · [FACT] Delivered the P0-06 harness. Quality checks passed 72/72 locally and on both CI runners. Playwright launched Electron on Windows (1/1), and the empty golden suite reported `0 cases`. [Handover](handovers/P0-06.md) · [Windows launch](https://github.com/pfc-studio/product-factory-console/actions/runs/45883170171/job/140127262278)
 - 2026-11-26 · Chief · [FACT] At 19:12 London, squash-merged [PR #4](https://github.com/pfc-studio/product-factory-console/pull/4) into main as [`4525258`](https://github.com/pfc-studio/product-factory-console/commit/4525258).
 - 2026-11-26 · GPT2 · [FACT] P0-03 PASS on `4e65b7d`. The independent probe failed at the named assertion on Windows and Ubuntu. Both restored jobs and the clean local check passed 70/70. B-008 is resolved. [Review](reviews/P0-03.md#independent-hosted-reruns)
 - 2026-11-26 · GPT2 · [FACT] P0-03 review FAIL on `3bf8e85`. Criteria 1–3 passed. Local probe failed as expected and restored checks passed 70/70. Criterion 4 is NOT RUN for independent hosted reproduction. [Review](reviews/P0-03.md)
@@ -43,7 +43,7 @@ NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Co
 ## Blockers
 [FACT] P0-03 push CI passed on `main` at `4525258`. B-008 is resolved. [CI run](https://github.com/pfc-studio/product-factory-console/actions/runs/45881853759) · [Blocker register](BLOCKERS.md)
 
-[FACT] P0-06 Windows Playwright launch and fixture criteria are NOT RUN. BR(Ai)NS-dependent verification is NOT RUN. [Handover](handovers/P0-06.md)
+[FACT] GPT2’s P0-06 fixture criteria and BR(Ai)NS-dependent verification are NOT RUN. [Handover](handovers/P0-06.md)
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
@@ -56,7 +56,7 @@ NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Co
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
-- 2026-11-26 · GPT1 · [FACT] Handed the P0-06 Playwright and Vitest harness to GPT2 on `task/P0-06`.
+- 2026-11-26 · GPT1 · [FACT] Handed draft PR #5 and P0-06 Windows launch evidence to GPT2 on `task/P0-06`.
 - 2026-11-26 · Chief · [FACT] Squash-merged PR #4 as `4525258` at 19:12 London.
 - 2026-11-26 · GPT2 · [FACT] P0-03 PASS after Chief-authorised Windows and Ubuntu reruns. Closed B-008 and handed PR #4 to Chief for merge.
 - 2026-11-26 · GPT2 · [FACT] Recorded P0-03 review FAIL, opened B-008 and retained the review turn pending authorisation for independent hosted reruns.
