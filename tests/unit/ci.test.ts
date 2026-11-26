@@ -52,3 +52,7 @@ test("CI runs the quality check on both standard runners for PRs and main pushes
   );
   expect(source).not.toMatch(/\bsecrets\s*(?:\.|\[)/iu);
 });
+
+test("deliberate CI failure probe", () => {
+  expect("fictional actual").toBe("fictional expected");
+});
