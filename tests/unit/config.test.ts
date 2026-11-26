@@ -159,6 +159,29 @@ test("marketplace limits are read from YAML and never hard-coded in src", async 
   expect(findHardCodedLimits(join(root, "src"), values)).toEqual([]);
 });
 
+test("reports literal marketplace limits in source HTML with their file and line", () => {
+  const sourceDirectory = join(configDirectory, "src");
+  const shellDirectory = join(sourceDirectory, "shell");
+  mkdirSync(shellDirectory, { recursive: true });
+  const probe = join(shellDirectory, "pfc-limit-probe.html");
+  const limitLine = '<input name="listing-title" maxlength="140" />';
+  writeFileSync(
+    probe,
+    [
+      limitLine,
+      '<input maxlength="1400" />',
+      '<span data-size="140.5">item140</span>',
+      `  ${limitLine}`,
+      "",
+    ].join("\r\n"),
+  );
+
+  expect(findHardCodedLimits(sourceDirectory, new Set([140]))).toEqual([
+    `${probe}:1: ${limitLine}`,
+    `${probe}:4: ${limitLine}`,
+  ]);
+});
+
 test.each([
   "Number(140n)",
   "140n",

@@ -212,8 +212,27 @@ function matchesLimit(value: Constant, limits: ReadonlySet<number | null>) {
   );
 }
 
+function scanHtml(
+  file: string,
+  source: string,
+  limits: ReadonlySet<number | null>,
+) {
+  // Preserve the literal token boundaries used before the AST scan.
+  const numericLiteral =
+    /(?<![\w.])(?:(?:0[xob][\da-f_]+|\d[\d_]*)n(?!\w)|(?:0[xob][\da-f_]+|(?:\d[\d_]*(?:\.[\d_]*)?|\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?)(?![\w.]))/giu;
+  return source.split(/\r\n?|\n/u).flatMap((line, index) => {
+    const literals = line.match(numericLiteral) ?? [];
+    const hasLimit = literals.some((literal) =>
+      limits.has(Number(literal.replaceAll("_", "").replace(/n$/iu, ""))),
+    );
+    return hasLimit ? [`${file}:${index + 1}: ${line.trim()}`] : [];
+  });
+}
+
 function scanFile(file: string, limits: ReadonlySet<number | null>) {
   const source = readFileSync(file, "utf8");
+  if (/\.html$/iu.test(file)) return scanHtml(file, source, limits);
+
   const ast = ts.createSourceFile(file, source, ts.ScriptTarget.Latest);
   const constants = new Map<ts.Node, Constant>();
   const lines = new Set<number>();
@@ -246,7 +265,7 @@ export function findHardCodedLimits(
   return readdirSync(sourceDirectory, { recursive: true, withFileTypes: true })
     .filter(
       (entry) =>
-        entry.isFile() && /\.(?:[cm]?[jt]s|[jt]sx)$/iu.test(entry.name),
+        entry.isFile() && /\.(?:html|[cm]?[jt]s|[jt]sx)$/iu.test(entry.name),
     )
     .flatMap((entry) => scanFile(join(entry.parentPath, entry.name), limits));
 }

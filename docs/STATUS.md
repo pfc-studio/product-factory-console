@@ -1,14 +1,16 @@
 # STATUS (the baton)
 
-**Turn:** GPT1 · Builder (i9aa)
-**Mode:** P0-02 blocked · P0-03 preparation
+**Turn:** GPT2 · Plans & Quality (i988)
+**Mode:** P0-02 re-review
 **Live branch:** task/P0-02
 **Open PR:** [#2](https://github.com/pfc-studio/product-factory-console/pull/2) · draft
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
-**Current task:** P0-02 Config loaders blocked by B-007. Next unblocked task is P0-03 CI.
+**Current task:** P0-02 Config loaders. B-007 fix awaiting independent re-review.
 
 ## Last done
-- 2026-11-26 · GPT2 · [FACT] P0-02 re-review FAIL on `90f8123`. Criteria 1–4, clean check (68/68), B-006 probes and independent Windows smoke passed. Criterion 5 failed because the scan skips a literal limit in source HTML. B-006 is resolved. B-007 awaits Ashley after the third failed review. [Review](reviews/P0-02.md#re-review-on-90f8123)
+- 2026-11-26 · Chief · [FACT] At 03:32 London, authorised one B-007 fix to restore literal source HTML scanning, with a failing-first regression from the review probe. The decision was given in the continuation prompt. [D-026](DECISIONS.md#decisions-and-assumptions)
+- 2026-11-26 · GPT1 · [FACT] Restored literal HTML scanning. The planted HTML probe exited 1 and named its file and line. The existing TypeScript, JavaScript and BigInt probes were still rejected. The clean check passed 69/69. [Handover](handovers/P0-02.md#b-007-html-source-scan-addendum)
+- 2026-11-26 · GPT2 · [FACT] P0-02 re-review FAIL on `90f8123`. Criteria 1–4, clean check (68/68), B-006 probes and independent Windows smoke passed. Criterion 5 failed because the scan skipped a literal limit in source HTML. B-006 is resolved. GPT2 escalated B-007 after the third failed review. [Review](reviews/P0-02.md#re-review-on-90f8123)
 - 2026-11-26 · GPT1 · Replaced the marketplace limit regex with TypeScript AST constant folding. Both B-006 probes failed with their paths and lines. The clean check passed 68/68. [Handover](handovers/P0-02.md#b-006-ast-source-scan-addendum)
 - 2026-11-25 · GPT2 · P0-02 re-review FAIL on `3e7c975`. Criteria 1–4 and the independent Windows smoke passed. B-005 is resolved. B-006 tracks the missed numeric literals before property access. [Review](reviews/P0-02.md#re-review-on-3e7c975)
 - 2026-11-25 · GPT1 · B-005 fix `0284afa` detects BigInt limits. The planted `Number(140n)` failed the scan with its file and line. Clean check, build and Windows smoke passed. [Handover addendum](handovers/P0-02.md#b-005-source-scan-addendum)
@@ -26,18 +28,17 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. GPT1 · [APPLY] Read this baton and the confirmed P0-03 card on `task/P0-02`. Prepare P0-03 locally on `task/P0-03` from `main`. P0-03 depends on merged P0-01. Keep to one open build PR under WORKFLOW §3. [P0-03 handover card](tasks/P0-03.md)
+1. GPT2 · [APPLY] Independently re-review P0-02 on the head of draft PR #2. Reproduce the B-007 and existing probes, the clean check and the Windows smoke evidence. [Handover](handovers/P0-02.md#b-007-html-source-scan-addendum)
 
-NEXT → paste the continuation prompt into GPT1 · Builder (i9aa) · Codex · branch task/P0-02
+NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-02
 
 ## Blockers
-[FACT] B-007 blocks P0-02 and its draft PR. B-005 and B-006 are resolved. [Blocker register](BLOCKERS.md)
+[FACT] Chief authorised the B-007 rework. B-007 remains open pending GPT2’s independent re-review. B-005 and B-006 are resolved. [Blocker register](BLOCKERS.md)
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
 2. P0-04 design feedback. Share preferences after automated checks pass or defer. Default is to defer. Non-blocking.
-3. P0-02 third failed review (B-007). [APPLY] Authorise one fix limited to restoring literal HTML coverage, or park draft PR #2 so P0-03 can open a PR. Default is to keep #2 in draft and prepare P0-03 locally. This blocks P0-02 rework and merge. P0-03 local work can proceed.
-4. Separate PR #2 review submission. [FACT] Automatic approval review blocked the post as external messaging. [APPLY] Explicitly authorise this PR review or rely on the committed review record. Default is the committed record. Non-blocking for P0-03 local work.
+3. Separate PR #2 review submission. [FACT] Automatic approval review blocked the post as external messaging. [APPLY] Explicitly authorise this PR review or rely on the committed review record. Default is the committed record. Non-blocking for independent re-review.
 
 ## Phase tracker
 | Phase | Started | Cap | Used | Exit criteria | Result |
@@ -45,6 +46,7 @@ NEXT → paste the continuation prompt into GPT1 · Builder (i9aa) · Codex · b
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
+- 2026-11-26 · GPT1 · [FACT] Recorded Chief’s authorisation, restored the B-007 HTML scan with a failing-first test and handed draft PR #2 to GPT2 for independent re-review.
 - 2026-11-26 · GPT2 · P0-02 re-review FAIL on `90f8123`. Resolved B-006, escalated B-007 to Ashley and handed P0-03 local preparation to GPT1.
 - 2026-11-26 · GPT1 · Fixed B-006 with an AST fold and test-first corpus. Handed draft PR #2 back to GPT2 on `task/P0-02`.
 - 2026-11-25 · GPT2 · P0-02 re-review FAIL on `3e7c975`. Resolved B-005, opened B-006 and handed draft PR #2 back to GPT1 on `task/P0-02`.
