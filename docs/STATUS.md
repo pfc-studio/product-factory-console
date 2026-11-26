@@ -2,8 +2,8 @@
 
 **Turn:** GPT2 · Plans & Quality (i988)
 **Mode:** P0-04 delivered for Chief’s independent review
-**Live branch:** `task/P0-04`
-**Open PR:** [P0-04 pull request](https://github.com/pfc-studio/product-factory-console/pulls?q=is%3Apr+head%3Atask%2FP0-04) · Chief to review after green checks
+**Live branch:** main
+**Open PR:** [#6](https://github.com/pfc-studio/product-factory-console/pull/6) · Chief to review after green checks
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
 **Current task:** P0-04 Clickable mockup of the three screens
 
@@ -38,10 +38,10 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. Chief · Review the [P0-04 prototype](mockup/index.html) and merge the P0-04 PR after green checks. [Author evidence](reviews/P0-04.md)
+1. Chief · Review the [P0-04 prototype](mockup/index.html) and merge [PR #6](https://github.com/pfc-studio/product-factory-console/pull/6) after green checks. [Author evidence](reviews/P0-04.md)
 2. GPT2 · After merge, take [P0-05](tasks/P0-05.md) on `main`.
 
-NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-04
+NEXT → merge PR #6, then paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch main
 
 ## Blockers
 [FACT] P0-03 push CI passed on `main` at `4525258`. B-008 is resolved. [CI run](https://github.com/pfc-studio/product-factory-console/actions/runs/45881853759) · [Blocker register](BLOCKERS.md)
