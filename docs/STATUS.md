@@ -1,13 +1,14 @@
 # STATUS (the baton)
 
-**Turn:** GPT2 · Plans & Quality (i988)
-**Mode:** P0-02 re-review
-**Live branch:** task/P0-02
-**Open PR:** [#2](https://github.com/pfc-studio/product-factory-console/pull/2) · draft
+**Turn:** GPT1 · Builder (i9aa) after Chief merges PR #2
+**Mode:** Awaiting merge
+**Live branch:** main after PR #2 merges
+**Open PR:** [#2](https://github.com/pfc-studio/product-factory-console/pull/2)
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
-**Current task:** P0-02 Config loaders. B-007 fix awaiting independent re-review.
+**Current task:** P0-02 Config loaders passed independent re-review. P0-03 is next after merge.
 
 ## Last done
+- 2026-11-26 · GPT2 · P0-02 re-review PASS on `505affa`. All five criteria passed. The HTML, TypeScript, JavaScript and BigInt probes exited 1 with their file and line. The clean check passed 69/69 and the Windows smoke log and screenshot were independently verified. B-007 is resolved. [Review](reviews/P0-02.md#re-review-on-505affa) · [Windows job](https://github.com/pfc-studio/product-factory-console/actions/runs/45853904823/job/140027119926)
 - 2026-11-26 · Chief · [FACT] At 03:32 London, authorised one B-007 fix to restore literal source HTML scanning, with a failing-first regression from the review probe. The decision was given in the continuation prompt. [D-026](DECISIONS.md#decisions-and-assumptions)
 - 2026-11-26 · GPT1 · [FACT] Restored literal HTML scanning. The planted HTML probe exited 1 and named its file and line. The existing TypeScript, JavaScript and BigInt probes were still rejected. The clean check passed 69/69. [Handover](handovers/P0-02.md#b-007-html-source-scan-addendum)
 - 2026-11-26 · GPT2 · [FACT] P0-02 re-review FAIL on `90f8123`. Criteria 1–4, clean check (68/68), B-006 probes and independent Windows smoke passed. Criterion 5 failed because the scan skipped a literal limit in source HTML. B-006 is resolved. GPT2 escalated B-007 after the third failed review. [Review](reviews/P0-02.md#re-review-on-90f8123)
@@ -28,17 +29,18 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. GPT2 · [APPLY] Independently re-review P0-02 on the head of draft PR #2. Reproduce the B-007 and existing probes, the clean check and the Windows smoke evidence. [Handover](handovers/P0-02.md#b-007-html-source-scan-addendum)
+1. Chief · Squash-merge PR #2 once it is ready and its head checks are green. [PR checks](https://github.com/pfc-studio/product-factory-console/pull/2/checks)
+2. GPT1 · Start P0-03 from the merged `main` on `task/P0-03`. [Task card](tasks/P0-03.md)
 
-NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-02
+NEXT → merge PR #2, then paste the continuation prompt into GPT1 · Builder (i9aa) · Codex · branch main
 
 ## Blockers
-[FACT] Chief authorised the B-007 rework. B-007 remains open pending GPT2’s independent re-review. B-005 and B-006 are resolved. [Blocker register](BLOCKERS.md)
+No open P0-02 blockers. B-005, B-006 and B-007 are resolved. [Blocker register](BLOCKERS.md)
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
 2. P0-04 design feedback. Share preferences after automated checks pass or defer. Default is to defer. Non-blocking.
-3. Separate PR #2 review submission. [FACT] Automatic approval review blocked the post as external messaging. [APPLY] Explicitly authorise this PR review or rely on the committed review record. Default is the committed record. Non-blocking for independent re-review.
+3. Separate PR #2 review submission. Automatic approval review previously blocked the post as external messaging. Ashley can authorise a separate post or use the committed review, which is the default. Non-blocking. [Committed review](reviews/P0-02.md#re-review-on-505affa)
 
 ## Phase tracker
 | Phase | Started | Cap | Used | Exit criteria | Result |
@@ -46,6 +48,7 @@ NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Co
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
+- 2026-11-26 · GPT2 · P0-02 re-review PASS on `505affa`. B-007 resolved. PR #2 is with Chief for merge, then P0-03 goes to GPT1.
 - 2026-11-26 · GPT1 · [FACT] Recorded Chief’s authorisation, restored the B-007 HTML scan with a failing-first test and handed draft PR #2 to GPT2 for independent re-review.
 - 2026-11-26 · GPT2 · P0-02 re-review FAIL on `90f8123`. Resolved B-006, escalated B-007 to Ashley and handed P0-03 local preparation to GPT1.
 - 2026-11-26 · GPT1 · Fixed B-006 with an AST fold and test-first corpus. Handed draft PR #2 back to GPT2 on `task/P0-02`.
