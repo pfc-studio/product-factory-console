@@ -27,7 +27,7 @@ GPT2 owns ordering and turns items into task cards (`docs/tasks/<ID>.md`) that m
 | P0-03 | CI: GitHub Actions running `npm run check` on `windows-latest` and `ubuntu-latest` | GPT1 | Workflow file runs on PR; free tier only; no secrets needed; failure blocks merge recommendation | Done (awaiting merge) |
 | P0-04 | Clickable mockup of Make, Workflow, Review (static HTML in `docs/mockup/`) | GPT2 | Opens in a browser offline; three screens match PLAN section 2; Ashley's comments captured in DECISIONS | Ready |
 | P0-05 | Verify Etsy rules and limits; date `marketplaces.yaml`; record AI disclosure requirement | GPT2 | Each value has source URL and access date; unverifiable values stay `unverified`; DECISIONS entry | Ready |
-| P0-06 | Test harness: hostile text fixtures, fictional weekly planner fixture, `test:e2e` and `test:golden` script stubs | GPT1 (fixtures by GPT2) | Scripts exist and run; fixtures fictional; hostile samples include prompt injection, oversized text, odd Unicode, path tricks | In review |
+| P0-06 | Test harness: hostile text fixtures, fictional weekly planner fixture, `test:e2e` and `test:golden` script stubs | GPT1 (fixtures by GPT2) | Scripts exist and run; fixtures fictional; hostile samples include prompt injection, oversized text, odd Unicode, path tricks | Done (awaiting merge) |
 | P0-07 | Secrets and data guard in `npm run check` (pattern scan for keys/tokens, blocked file types) | GPT1 | A fake key planted in a temporary test file fails the scan (test); committed fixtures pass | Ready |
 
 ## The three screens

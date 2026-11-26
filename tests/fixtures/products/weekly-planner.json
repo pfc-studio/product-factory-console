@@ -1,0 +1,43 @@
+{
+  "title": "Undated weekly planner printable",
+  "description": "A fictional weekly planner with space for priorities, appointments and notes. The example download includes A4 and US Letter PDFs and a print guide.",
+  "tags": [
+    "weekly planner",
+    "undated planner",
+    "printable planner",
+    "weekly organiser",
+    "weekly diary",
+    "priority list",
+    "week at a glance",
+    "planning sheet",
+    "printable pdf",
+    "a4 planner",
+    "us letter planner",
+    "desk planner",
+    "weekly notes"
+  ],
+  "priceMinor": 349,
+  "currency": "GBP",
+  "variants": {
+    "overLimit": {
+      "title": "Undated weekly planner printable with a week at a glance, priority list, appointments, notes, task list, habit tracker, meal planner, and a full set of print layouts"
+    },
+    "duplicateTag": {
+      "tags": [
+        "weekly planner",
+        "undated planner",
+        "printable planner",
+        "weekly organiser",
+        "weekly diary",
+        "priority list",
+        "week at a glance",
+        "planning sheet",
+        "printable pdf",
+        "a4 planner",
+        "us letter planner",
+        "desk planner",
+        "weekly planner"
+      ]
+    }
+  }
+}

@@ -1,13 +1,14 @@
 # STATUS (the baton)
 
 **Turn:** GPT2 · Plans & Quality (i988)
-**Mode:** P0-06 Builder harness, awaiting independent review
-**Live branch:** task/P0-06
-**Open PR:** [#5](https://github.com/pfc-studio/product-factory-console/pull/5) · draft, awaiting GPT2 review
+**Mode:** P0-06 review complete, awaiting Chief's merge
+**Live branch:** main
+**Open PR:** [#5](https://github.com/pfc-studio/product-factory-console/pull/5) · Chief to review fixtures and merge after green checks
 **Phase:** 0 · Setup · started 2026-11-25 · cap 2–3 days
 **Current task:** P0-06 Test harness and fixtures
 
 ## Last done
+- 2026-11-26 · GPT2 · [FACT] P0-06 Builder criterion 3 PASS on `77d3e01`. The independent Windows rerun passed 1/1 and the golden probes behaved as expected. GPT2's three fixture checks passed. The full local check passed 75/75. [Review](reviews/P0-06.md) · [Windows rerun](https://github.com/pfc-studio/product-factory-console/actions/runs/45883432287/job/140149250067)
 - 2026-11-26 · GPT1 · [FACT] Delivered the P0-06 harness. Quality checks passed 72/72 locally and on both CI runners. Playwright launched Electron on Windows (1/1), and the empty golden suite reported `0 cases`. [Handover](handovers/P0-06.md) · [Windows launch](https://github.com/pfc-studio/product-factory-console/actions/runs/45883170171/job/140127262278)
 - 2026-11-26 · Chief · [FACT] At 19:12 London, squash-merged [PR #4](https://github.com/pfc-studio/product-factory-console/pull/4) into main as [`4525258`](https://github.com/pfc-studio/product-factory-console/commit/4525258).
 - 2026-11-26 · GPT2 · [FACT] P0-03 PASS on `4e65b7d`. The independent probe failed at the named assertion on Windows and Ubuntu. Both restored jobs and the clean local check passed 70/70. B-008 is resolved. [Review](reviews/P0-03.md#independent-hosted-reruns)
@@ -35,20 +36,21 @@
 - 2026-11-25 · Setup · Repository created with plan, workflow, backlog, decisions and Phase 0 task cards. (No code yet.)
 
 ## Next
-1. GPT2 · Reproduce criterion 3 on `task/P0-06` and record the independent verdict. Criteria 1, 2 and 4 are GPT2’s fixture work. [P0-06 task card](tasks/P0-06.md) · [Handover](handovers/P0-06.md)
-2. GPT2 · P0-04 and P0-05 remain queued.
+1. Chief · Review the P0-06 fixture changes and merge PR #5 after green checks. [Review](reviews/P0-06.md)
+2. GPT2 · After merge, take P0-04 on `main`. P0-05 stays queued. [P0-04 task card](tasks/P0-04.md)
 
-NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch task/P0-06
+NEXT → merge PR #5, then paste the continuation prompt into GPT2 · Plans & Quality (i988) · Codex · branch main
 
 ## Blockers
 [FACT] P0-03 push CI passed on `main` at `4525258`. B-008 is resolved. [CI run](https://github.com/pfc-studio/product-factory-console/actions/runs/45881853759) · [Blocker register](BLOCKERS.md)
 
-[FACT] GPT2’s P0-06 fixture criteria and BR(Ai)NS-dependent verification are NOT RUN. [Handover](handovers/P0-06.md)
+[FACT] BR(Ai)NS-dependent verification for P0-06 is NOT RUN. The task card does not require it. [Review](reviews/P0-06.md#scope-and-safety)
 
 ## Needs Ashley
 1. Weekly hours (D-008). Set a weekly hours cap or keep calendar-week tracking. Default is calendar-week tracking. Non-blocking.
 2. P0-04 design feedback. Share preferences after automated checks pass or defer. Default is to defer. Non-blocking.
 3. P0-03 hosted reruns (B-008) · **Resolved.** [FACT] Chief authorised rerunning `45869762967` and then `45869938318` on the free standard hosted runners at 18:50 London on 26 November 2026. Both reruns completed with the expected results. [Decision D-027](DECISIONS.md#decisions-and-assumptions) · [Evidence](reviews/P0-03.md#independent-hosted-reruns)
+4. P0-06 merge. Review the fixture evidence and merge PR #5 once CI is green, or leave it open for changes. Default is to leave it open until reviewed.
 
 ## Phase tracker
 | Phase | Started | Cap | Used | Exit criteria | Result |
@@ -56,6 +58,7 @@ NEXT → paste the continuation prompt into GPT2 · Plans & Quality (i988) · Co
 | 0 | 2026-11-25 | 2–3 days | 0 | Blank app launches and checks pass | — |
 
 ## Turn log (newest first, one line each)
+- 2026-11-26 · GPT2 · [FACT] Independently passed P0-06 Builder criterion 3, added and tested the fixtures, and handed PR #5 to Chief.
 - 2026-11-26 · GPT1 · [FACT] Handed draft PR #5 and P0-06 Windows launch evidence to GPT2 on `task/P0-06`.
 - 2026-11-26 · Chief · [FACT] Squash-merged PR #4 as `4525258` at 19:12 London.
 - 2026-11-26 · GPT2 · [FACT] P0-03 PASS after Chief-authorised Windows and Ubuntu reruns. Closed B-008 and handed PR #4 to Chief for merge.
