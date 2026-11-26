@@ -41,3 +41,7 @@ jobs:
           if-no-files-found: error
       - name: Run Electron end-to-end test
         run: npm run test:e2e
+      - name: Install browser for offline mockup acceptance
+        run: npx --no-install playwright install chromium --only-shell
+      - name: Run offline mockup acceptance
+        run: node --test tests/acceptance/p0-04-mockup.mjs

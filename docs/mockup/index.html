@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'" />
+    <title>Product Factory Console · Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="brand">Product Factory Console <small>Prototype</small></div>
+      <nav aria-label="Screens">
+        <a href="#make" aria-current="page">Make</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#review">Review</a>
+      </nav>
+    </header>
+    <main>
+      <section data-screen="#make" class="make" aria-labelledby="make-heading">
+        <h1 id="make-heading">What are we making?</h1>
+        <form id="make-form" class="card">
+          <textarea id="idea" name="idea" aria-labelledby="make-heading" placeholder="An undated weekly planner for a busy desk…" required></textarea>
+          <div id="chips" class="chips"></div>
+          <div class="actions make-actions">
+            <label class="check"><input type="checkbox" id="research" /> Research first</label>
+            <button class="primary">Make</button>
+          </div>
+        </form>
+        <div class="recents">
+          <div><h2>Recent products</h2><a href="#review">Undated weekly planner</a></div>
+          <span class="badge">Suggestions 1</span>
+        </div>
+      </section>
+
+      <section data-screen="#workflow" aria-labelledby="workflow-heading" hidden>
+        <h1 id="workflow-heading" tabindex="-1">Workflow</h1>
+        <p id="workflow-idea" class="muted">Undated weekly planner</p>
+        <p id="workflow-options" class="muted" hidden></p>
+        <div id="steps" class="steps"></div>
+      </section>
+
+      <section data-screen="#review" aria-labelledby="review-heading" hidden>
+        <h1 id="review-heading">Review</h1>
+        <p class="muted">Etsy profile unverified</p>
+        <div class="review-grid">
+          <figure class="card preview" aria-label="Weekly planner preview">
+            <div class="paper" aria-hidden="true">
+              <strong>Weekly Planner</strong>
+              <small>WEEK OF</small>
+              <div class="days">
+                <span>MON</span><span>TUE</span><span>WED</span><span>THU</span>
+                <span>FRI</span><span>SAT</span><span>SUN</span><span>NOTES</span>
+              </div>
+            </div>
+            <figcaption>Sample preview · A4 and US Letter</figcaption>
+          </figure>
+          <article class="card listing" aria-labelledby="listing-heading">
+            <div class="listing-header"><h2 id="listing-heading">Weekly planner listing</h2><strong id="price"></strong></div>
+            <label for="title">Title</label>
+            <input id="title" aria-describedby="title-count" />
+            <small id="title-count"></small>
+            <label for="description">Description</label>
+            <textarea id="description" rows="3" aria-describedby="description-count"></textarea>
+            <small id="description-count"></small>
+            <label for="tags">Tags</label>
+            <small id="tag-hint">One per line</small>
+            <textarea id="tags" rows="5" aria-describedby="tag-hint tag-count"></textarea>
+            <small id="tag-count"></small>
+            <p id="warnings" class="warning" role="status"></p>
+            <button id="compare-toggle" type="button" aria-expanded="false" aria-controls="compare">Compare titles</button>
+            <div id="compare" class="compare" hidden>
+              <div><h3>Current title</h3><p id="current-title"></p></div>
+              <div><h3>Alternate title</h3><p id="alternate-title"></p><button id="use-alternate" type="button">Use alternate title</button></div>
+            </div>
+            <p id="review-status" class="check-status" role="status" aria-label="Review status">Checks NOT RUN</p>
+            <div class="actions">
+              <button type="button" aria-describedby="review-status" disabled>Approve</button>
+              <button id="send-back" type="button" aria-expanded="false" aria-controls="send-back-reasons">Send back</button>
+              <button id="hold" type="button">Hold</button>
+            </div>
+            <div id="send-back-reasons" class="actions" hidden>
+              <button type="button">Revise listing</button>
+              <button type="button">Replace files</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script>
+      const get = (selector) => document.querySelector(selector);
+      const tabs = [...document.querySelectorAll("nav a")];
+      const screens = [...document.querySelectorAll("[data-screen]")];
+      function showScreen() {
+        const route = tabs.some((tab) => tab.hash === location.hash) ? location.hash : "#make";
+        for (const tab of tabs) {
+          if (tab.hash === route) tab.setAttribute("aria-current", "page");
+          else tab.removeAttribute("aria-current");
+        }
+        for (const screen of screens) screen.hidden = screen.dataset.screen !== route;
+        window.scrollTo(0, 0);
+      }
+      window.addEventListener("hashchange", showScreen);
+      showScreen();
+
+      const chipGroups = {
+        "Product type": ["Planner", "Tracker", "Checklist"],
+        Audience: ["Home", "Work", "Study"],
+        Size: ["A4", "US Letter", "Both"],
+        Style: ["Minimal", "Illustrated"],
+        Marketplace: ["Etsy"],
+      };
+      for (const [i, [name, choices]] of Object.entries(chipGroups).entries()) {
+        const options = choices.map((choice) => `<label><input type="radio" name="chip-${i}" value="${choice}" /> <span>${choice}</span></label>`).join("");
+        get("#chips").insertAdjacentHTML("beforeend", `<fieldset><legend>${name}</legend>${options}</fieldset>`);
+      }
+      for (const step of ["Research", "Spec", "Prompt", "Generate", "Check", "Package", "Listing", "Review"]) {
+        get("#steps").insertAdjacentHTML("beforeend", `<fieldset class="card step">
+          <legend>${step}</legend>
+          <label class="check"><input type="checkbox" checked /> On</label>
+          <label>Pane <select><option>None</option><option>ChatGPT</option><option>Other AI</option></select></label>
+          <label>Prompt version <select><option>v1</option><option>v2</option></select></label>
+          <label>Mode <select><option>Ask me</option><option>Run automatically</option></select></label>
+        </fieldset>`);
+      }
+      get("#make-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const idea = get("#idea").value.trim();
+        if (!idea) return;
+        const choices = [...document.querySelectorAll("#chips input:checked")];
+        get("#workflow-idea").textContent = idea;
+        get("#workflow-options").textContent = choices.map((chip) => chip.value).join(" · ");
+        get("#workflow-options").hidden = choices.length === 0;
+        get("#steps input[type=checkbox]").checked = get("#research").checked;
+        location.hash = "workflow";
+        showScreen();
+        get("#workflow-heading").focus();
+      });
+
+      // File URLs can open this snapshot without fetching the fixture or profile.
+      const planner = {
+        title: "Undated weekly planner printable",
+        description: "A fictional weekly planner with space for priorities, appointments and notes. The example download includes A4 and US Letter PDFs and a print guide.",
+        tags: ["weekly planner", "undated planner", "printable planner", "weekly organiser", "weekly diary", "priority list", "week at a glance", "planning sheet", "printable pdf", "a4 planner", "us letter planner", "desk planner", "weekly notes"],
+        priceMinor: 349n,
+        alternate: "Undated weekly planner printable with a week at a glance, priority list, appointments, notes, task list, habit tracker, meal planner, and a full set of print layouts",
+      };
+      const profile = { title: 140, tags: 13, tagLength: 20 };
+      const [title, description, tags] = [get("#title"), get("#description"), get("#tags")];
+      title.value = planner.title;
+      description.value = planner.description;
+      tags.value = planner.tags.join("\n");
+      get("#alternate-title").textContent = planner.alternate;
+      get("#price").textContent = `£${planner.priceMinor / 100n}.${String(planner.priceMinor % 100n).padStart(2, "0")}`;
+      const length = (value) => [...value].length;
+      function updateReview() {
+        const titleLength = length(title.value);
+        const tagList = tags.value.split("\n").map((tag) => tag.trim()).filter(Boolean);
+        const seen = new Set();
+        const warnings = new Set();
+        if (titleLength > profile.title) warnings.add("Title exceeds the profile limit.");
+        if (tagList.length > profile.tags) warnings.add("Too many tags for the profile.");
+        for (const tag of tagList) {
+          const key = tag.toLowerCase();
+          if (seen.has(key)) warnings.add(`Duplicate tag: ${tag}.`);
+          if (length(tag) > profile.tagLength) warnings.add(`Tag exceeds the profile limit: ${tag}.`);
+          seen.add(key);
+        }
+        get("#title-count").textContent = `${titleLength} / ${profile.title} characters`;
+        get("#description-count").textContent = `${length(description.value)} characters · profile limit unknown`;
+        get("#tag-count").textContent = `${tagList.length} / ${profile.tags} tags`;
+        get("#warnings").textContent = [...warnings].join("\n");
+        get("#current-title").textContent = title.value;
+      }
+      for (const field of [title, description, tags]) field.addEventListener("input", updateReview);
+      updateReview();
+
+      function togglePanel(button, panel, open = panel.hidden) {
+        panel.hidden = !open;
+        button.setAttribute("aria-expanded", String(open));
+      }
+      const compare = get("#compare");
+      const compareToggle = get("#compare-toggle");
+      compareToggle.addEventListener("click", () => togglePanel(compareToggle, compare));
+      get("#use-alternate").addEventListener("click", () => {
+        title.value = planner.alternate;
+        updateReview();
+        togglePanel(compareToggle, compare, false);
+        title.focus();
+      });
+      const sendBack = get("#send-back");
+      const reasons = get("#send-back-reasons");
+      sendBack.addEventListener("click", () => togglePanel(sendBack, reasons));
+      reasons.addEventListener("click", (event) => {
+        if (!event.target.matches("button")) return;
+        get("#review-status").textContent = `Sent back: ${event.target.textContent.toLowerCase()} · checks NOT RUN`;
+        togglePanel(sendBack, reasons, false);
+        sendBack.focus();
+      });
+      get("#hold").addEventListener("click", () => {
+        get("#review-status").textContent = "On hold · checks NOT RUN";
+        togglePanel(sendBack, reasons, false);
+      });
+    </script>
+  </body>
+</html>
